@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script>
+        var c, ctx, googlePic;
+        
+        function init(){
+            
+            c = document.getElementById("c");
+            ctx = c.getContext("2d");
+            googlePic = document.getElementById("g");
+            
+            ctx.drawImage(googlePic, 10, 20, 500, 200);
+            
+            ctx.fillStyle = "blue";
+            ctx.fillRect(100, 100, 300, 400);
+            
+            var imgd = ctx.getImageData(100, 200, 1, 1);
+            var pix = imgd.data;
+            
+            //console.log(pix);
+            console.log("Röd " + pix[0] + " Grön " + pix[1] + " Blå " + pix[2] + " Alpha " + pix[3])
+        }
+    
+    </script>
+    <style>
+        canvas{
+            background-color: aqua;
+        }
+        
+        #g{
+            display: none;
+        }
+    
+    </style>
+    </head>
+    <body onload="init()">
+        <canvas id="c" width="800" height="600"></canvas>
+        
+        <img id="g" src="google.png">
+    </body>
+
+</html>
